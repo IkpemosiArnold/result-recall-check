@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Recall Check</title>
+<meta name="description" content="Results a GP marked for recall, checked in plain code against the contact log and the appointment book. Every condition points at the record line behind it.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#181314">
+<link rel="icon" href="data:,">
+<link rel="preload" href="fonts/public-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/courier-prime-bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css?v=1">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-check" viewBox="0 0 16 16"><path d="M2.5 8.600l3.600 3.600L13.500 4.200" fill="none" stroke="currentColor" stroke-width="2.200" stroke-linecap="square"/></symbol>
+  <symbol id="i-cross" viewBox="0 0 16 16"><path d="M3.500 3.500 12.500 12.500M12.500 3.500 3.500 12.500" fill="none" stroke="currentColor" stroke-width="2.200" stroke-linecap="square"/></symbol>
+  <symbol id="i-none" viewBox="0 0 16 16"><circle cx="8" cy="8" r="5.700" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="2.400 2.400"/></symbol>
+</svg>
+<main class="form">
+  <header class="hd">
+    <div class="cell title">
+      <p class="mark">Recall Check <span class="tag stamp">Sample data</span></p>
+      <h1>Did the front desk do what the GP marked?</h1>
+      <p class="sub">Ten made-up results, checked against the contact log and the appointment book.</p>
+    </div>
+    <section class="cell shade reading" aria-labelledby="summary">
+      <p class="summary" id="summary" role="status"></p>
+      <p class="policy-note">Deadlines are this sample clinic's own policy, not RACGP rules.</p>
+    </section>
+    <div class="cell how-cell">
+      <button type="button" class="btn text" id="why-btn" aria-expanded="false" aria-controls="why">How a recall is checked</button>
+      <div class="why-text" id="why" hidden>
+        <p>The GP decides what a result needs. This page never reads the result itself. It takes the action the GP marked and checks that the front desk carried it out.</p>
+        <p>First, the name and date of birth on the result must match the patient record, the record must be active, and an action must be marked. If any of these fails, nobody is called until a person sorts it out. A comment is never read as an action.</p>
+        <p>The clinic's own policy, made up for this sample: urgent means the patient is asked to book the same working day and seen within 2 working days. Non-urgent means asked within 2 working days and seen within 14 days. Telephone means someone spoke to the patient within 2 working days.</p>
+        <p>An SMS counts only if it was delivered to the mobile on file that day. A patient not reached gets three calls, in the morning, at midday and in the afternoon, then a letter, each one recorded. A booking with a GP who is on leave that day does not count.</p>
+        <p>An urgent recall past its seen-by date goes to the GP the same day. Nothing is sent from this page. A person puts each open recall on today's list.</p>
+      </div>
+    </div>
+  </header>
+
+  <div id="groups" class="groups"></div>
+
+  <section class="tool" id="list" aria-labelledby="list-h">
+    <h2 id="list-h">Today's list</h2>
+    <div class="cell">
+      <p class="tool-sub" id="list-sub"></p>
+      <div class="actions top-actions">
+        <button type="button" id="csv" class="btn primary">Download today's list</button>
+      </div>
+      <p class="note">A CSV for the front desk. It does not write to the clinical software.</p>
+    </div>
+  </section>
+
+  <section class="tool" id="docs" aria-labelledby="docs-h">
+    <h2 id="docs-h">The records</h2>
+    <div class="cell">
+      <p class="tool-sub">What the checks read. Tap a record line under any recall to open it here. <span id="doc-file" class="file"></span></p>
+      <div class="tabs" id="doc-tabs" role="group" aria-label="Records"></div>
+      <div class="grid-scroll" id="doc-grid"></div>
+      <div class="actions top-actions">
+        <button type="button" id="reset" class="btn text">Reset sample</button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="cell foot">
+    <p>For practice managers and front desks who follow up results. Built by Arnold Ikpemosi Adeyemi. A worksheet with made-up patients, GPs and results.</p>
+    <p><a href="https://ikpemosi.work">ikpemosi.work</a></p>
+  </footer>
+</main>
+<script type="module" src="app.js?v=1"></script>
+</body>
+</html>

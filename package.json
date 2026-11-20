@@ -1,0 +1,9 @@
+{
+  "name": "result-recall-check",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Results a GP marked for recall, checked in plain code against the contact log and the appointment book. Every condition points at the record line behind it; anything unclear waits for a person.",
+  "scripts": { "test": "node --test" },
+  "license": "MIT"
+}
